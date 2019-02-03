@@ -13,6 +13,7 @@ public:
 	void calculate();
 	//need to figure out how I want to do this
 	void setinputs();
+	void display();
 private:
 	std::vector<std::vector<double>> network,weights1,weights2,weights3;
 };

@@ -40,7 +40,6 @@ void neuralnetwork::build3layer(int inputval, int hiddenval, int outputval)
 	{
 		weights2.push_back(w2);
 	}
-	weights3=void;
 }
 
 void neuralnetwork::build4layer(int inputval, int hidden1val, int hidden2val, int outputval)
@@ -86,7 +85,7 @@ void neuralnetwork::build4layer(int inputval, int hidden1val, int hidden2val, in
 	}
 	for(int i=0;i<outputval;i++)
 	{
-		weights3.push_back(w3)
+		weights3.push_back(w3);
 	}
 }
 
@@ -96,16 +95,50 @@ void neuralnetwork::calculate()
 	for(i=0;i<network[1].size();i++)
 	{
 		sum=0;
-		for(j=0;j<weights1.size();j++)
+		for(j=0;j<network[0].size();j++)
 		{
 			sum=sum+(weights1[i][j]*network[0][j]);
 		}
 		network[1][i]=sum;
+	}
+	for(i=0;i<network[2].size();i++)
+	{
+		sum=0;
+		for(j=0;j<network[1].size();j++)
+		{
+			sum=sum+(weights2[i][j]*network[1][j]);
+		}
+		network[2][i]=sum;
+	}
+	if(weights3.size()>0)
+	{
+		for(i=0;i<network[3].size();i++)
+		{
+			sum=0;
+			for(j=0;j<network[2].size();j++)
+			{
+				sum=sum+(weights3[i][j]*network[2][j]);
+			}
+		}
 	}
 	//Finish the other two calculations
 }
 
 void neuralnetwork::setinputs()
 {
+	for(int i=0;i<network[0].size();i++)
+	{
+		network[0][i]=1;
+	}
+}
 
+void neuralnetwork::display()
+{
+	for(int i=0;i<network.size();i++)
+	{
+		for(int j=0;j<network[i].size();j++)
+		{
+			cout<<network[i][j]<<endl;
+		}
+	}
 }
