@@ -7,13 +7,11 @@ using namespace std;
 int main()
 {
 	neuralnetwork threelayer,fourlayer;
-	threelayer.build3layer(4,3,1);
-	fourlayer.build4layer(5,4,3,1);
+	threelayer.build3layer(240,120,24);
+	fourlayer.build4layer(240,100,60,24);
 	threelayer.setinputs();
 	fourlayer.setinputs();
 	threelayer.calculate();
 	fourlayer.calculate();
-	threelayer.display();
-	fourlayer.display();
 	return 0;
 }
